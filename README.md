@@ -1,62 +1,38 @@
-# Smart Contract: mod1
+# Calculator Smart Contract
 
-This Solidity smart contract (`mod1.sol`) demonstrates the usage of `require()`, `assert()`, and `revert()` statements for error handling and conditions in Ethereum smart contracts.
+This smart contract implements basic arithmetic operations and demonstrates the usage of `require`, `assert`, and `revert` statements in Solidity.
 
 ## Functions
 
-### `deposit()`
+### `add(int256 a, int256 b)`
 
-Function to deposit Ether into the contract.
+Adds two integers `a` and `b` and updates the `result` variable.
 
-- **Modifiers**: `payable`
-- **Requirements**:
-  - Requires that the deposit amount is greater than zero (`require()` statement).
-- **Events**:
-  - Emits `RequireExecuted` event upon successful execution.
+### `subtract(int256 a, int256 b)`
 
-### `withdraw(uint256 amount)`
+Subtracts integer `b` from integer `a` and updates the `result` variable.
 
-Function to withdraw Ether from the contract.
+### `multiply(int256 a, int256 b)`
 
-- **Parameters**:
-  - `amount`: Amount of Ether to withdraw.
-- **Requirements**:
-  - Requires that the withdrawal amount is greater than zero and not exceed the sender's balance (`require()` statements).
-- **Events**:
-  - Emits `RequireExecuted` event upon successful execution.
+Multiplies two integers `a` and `b` and updates the `result` variable.
 
-### `transfer(address to, uint256 amount)`
+### `divide(int256 a, int256 b)`
 
-Function to transfer Ether to another address.
+Divides integer `a` by integer `b` and updates the `result` variable. Requires `b` to be non-zero.
 
-- **Parameters**:
-  - `to`: Recipient address.
-  - `amount`: Amount of Ether to transfer.
-- **Requirements**:
-  - Requires that the recipient address is valid (`to != address(0)`) and the transfer amount is greater than zero and not exceed the sender's balance (`require()` statements).
-- **Events**:
-  - Emits `RequireExecuted` events upon successful execution.
+### `getResult()`
 
-### `getBalance()`
+Returns the current value of the `result` variable.
 
-Function to retrieve the balance of the caller.
+### `resetResult()`
 
-- **Returns**: `uint256`
-- **Usage**: Returns the balance of the caller without modifying state.
+Resets the `result` variable to zero.
 
-### `checkBalance()`
+### `testAssert()`
 
-Function to check the balance of the caller with an assertion.
+Checks if `result` is non-negative using `assert`. If `result` is negative, the transaction reverts.
 
-- **Assertions**: Asserts that the balance of the caller is never negative (`assert()` statement).
-- **Events**:
-  - Emits `AssertExecuted` event upon successful execution.
+### `testRevert(bool condition)`
 
-### `demoRevert()`
+Checks the given `condition` and reverts the transaction with a message if `condition` is `false`.
 
-Function to demonstrate the use of revert.
-
-- **Revert**: Always reverts the transaction with the message "This is a revert statement" (`revert()` statement).
-- **Events**:
-  - Emits `RevertExecuted` event upon successful execution.
----
